@@ -1,11 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View ,StatusBar} from 'react-native';
+import Todo from './src/Todo'
+import SafeViewAndroid from "./components/SafeRegion";
+import AppBar from './components/AppBar';
+import { useState } from 'react';
+import './App.css'
+
 
 export default function App() {
+  const [selectMode, setSelectMode] = useState(false)
+  
+  
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={{overflow: 'hidden', flex: 1}}>
+      <AppBar selectMode={selectMode} setSelectMode={setSelectMode}/>
+      <Todo selectMode={selectMode} setSelectMode={setSelectMode}/>
     </View>
   );
 }
